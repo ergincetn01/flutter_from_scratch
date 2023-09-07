@@ -1,15 +1,11 @@
 import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:flutter_scratch/components/state_management/commmon/theme.dart';
+import 'package:flutter_scratch/components/state_management/common/routes.dart';
+import 'package:flutter_scratch/components/state_management/common/theme.dart';
 import 'package:flutter_scratch/components/state_management/models/cart.dart';
 import 'package:flutter_scratch/components/state_management/models/catalog.dart';
-import 'package:flutter_scratch/components/state_management/screens/cart.dart';
-import 'package:flutter_scratch/components/state_management/screens/catalog.dart';
-import 'package:flutter_scratch/components/state_management/screens/login.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-
 import 'package:window_size/window_size.dart';
 
 void main() {
@@ -32,30 +28,8 @@ void setupWindow() {
         width: windowWidth,
         height: windowHeight,
       ));
-    });
+    }); 
   }
-}
-
-GoRouter router() {
-  return GoRouter(
-    initialLocation: '/login',
-    routes: [
-      GoRoute(
-        path: '/login',
-        builder: (context, state) => const MyLogin(),
-      ),
-      GoRoute(
-        path: '/catalog',
-        builder: (context, state) => const MyCatalog(),
-        routes: [
-          GoRoute(
-            path: 'cart',
-            builder: (context, state) => const MyCart(),
-          ),
-        ],
-      ),
-    ],
-  );
 }
 
 class MyApp extends StatelessWidget {
